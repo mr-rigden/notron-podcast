@@ -1,0 +1,50 @@
+---
+title: "{{podcast.title}}"
+date: 2020-01-07
+---
+<div class="podcast-page">
+    <div class="podcast-cover-art">
+        <img src="{{podcast.cover_art_url}}">
+    </div>
+    <p class="podcast-summary">
+        {{podcast.description}}
+    </p>
+    <div class='row social-subscribe' id="subscribe">
+        <div class='column'>
+            <div class='blue-column'>
+                <h3>Social</h3>
+                <ul>
+                    {% for item in settings.social %}
+                    <li>
+                        <a href="{{ item.url }}">{{ item.name }}</a>
+                    </li>
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+        <div class='column right'>
+            <div class='green-column'>
+                <h3>Subscribe</h3>
+                <ul>
+                    {% for item in settings.subscription %}
+                    <li>
+                        <a href="{{ item.url }}">{{ item.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+    </div>
+    <div class="episodes">
+        <h3>Episodes</h3>
+        <ul>
+            {% for episode in podcast.episodes %}
+            <li>
+                <a href="{{settings.site_url}}/episodes/{{ episode.slug }}">{{ episode.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
